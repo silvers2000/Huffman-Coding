@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huffman Coding Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1><i class="fas fa-compress-alt"></i> Huffman Coding</h1>
+            <p>A lossless data compression algorithm</p>
+        </header>
+
+        <nav>
+            <ul class="tabs">
+                <li class="tab active" data-tab="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> Dashboard
+                </li>
+                <li class="tab" data-tab="analysis">
+                    <i class="fas fa-chart-bar"></i> Analysis
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <!-- Dashboard Tab -->
+            <section id="dashboard" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-file-upload"></i> File Upload</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="upload-form" enctype="multipart/form-data">
+                            <div class="file-upload-container">
+                                <div class="file-upload-area" id="drop-area">
+                                    <input type="file" id="file-input" class="file-input" accept=".txt">
+                                    <div class="file-upload-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Drag & Drop your file here or</p>
+                                        <button type="button" class="btn btn-primary" id="browse-btn">Browse Files</button>
+                                        <p class="file-info">Supported file: .txt</p>
+                                    </div>
+                                </div>
+                                <div class="selected-file" id="selected-file-info">
+                                    <p>No file selected</p>
+                                </div>
+                            </div>
+                            <div class="action-buttons">
+                                <button type="button" class="btn btn-success" id="compress-btn" disabled>
+                                    <i class="fas fa-compress"></i> Compress
+                                </button>
+                                <button type="button" class="btn btn-info" id="decompress-btn" disabled>
+                                    <i class="fas fa-expand"></i> Decompress
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card" id="compression-results" style="display: none;">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-pie"></i> Compression Results</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>Original Size</h3>
+                                    <p id="original-size">0 KB</p>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-file-archive"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>Compressed Size</h3>
+                                    <p id="compressed-size">0 KB</p>
+                                </div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-icon">
+                                    <i class="fas fa-percentage"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <h3>Compression Ratio</h3>
+                                    <p id="compression-ratio">0%</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="compression-progress">
+                            <div class="progress-bar-container">
+                                <div class="progress-bar" id="compression-progress-bar"></div>
+                            </div>
+                            <p><span id="compression-percentage">0%</span> compression</p>
+                        </div>
+                        <div class="download-section">
+                            <button class="btn btn-primary" id="download-btn">
+                                <i class="fas fa-download"></i> Download Compressed File
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Tab -->
+            <section id="analysis" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-table"></i> Frequency Table</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table id="frequency-table">
+                                <thead>
+                                    <tr>
+                                        <th>Character</th>
+                                        <th>Frequency</th>
+                                        <th>Percentage</th>
+                                        <th>Huffman Code</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Frequency data will be inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-bar"></i> Frequency Histogram</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container">
+                            <canvas id="frequency-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+
+        <footer>
+            <p>Huffman Coding Project &copy; 2025 | Data Structures and Algorithms</p>
+        </footer>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loading-text">Processing...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+</body>
+</html>
