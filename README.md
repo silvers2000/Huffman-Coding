@@ -14,11 +14,6 @@ This is a web-based implementation of the Huffman Coding algorithm with a profes
    - Frequency histogram visualization
    - Huffman code display
 
-3. **Visualization**
-   - Interactive Huffman tree visualization
-   - Animated tree construction
-   - Code table with visual representation
-
 ## How to Run
 
 ### Option 1: Using the run.py script (Recommended)
@@ -78,12 +73,6 @@ This is a web-based implementation of the Huffman Coding algorithm with a profes
    - After compression, navigate to the Analysis tab
    - View the frequency table of characters
    - Examine the histogram visualization
-
-3. **Visualization**:
-   - Navigate to the Visualization tab
-   - Click "Animate Tree Construction" to see the Huffman tree being built
-   - Adjust animation speed as needed
-   - View the code table showing the binary codes for each character
 
 ## Troubleshooting
 
