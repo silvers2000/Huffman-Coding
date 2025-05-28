@@ -29,7 +29,7 @@ This is a web-based implementation of the Huffman Coding algorithm with a profes
    ```
 3. Run the application using the provided script:
    ```
-   python run.py
+   python src/main.py
    ```
 4. Open your browser and navigate to:
    ```
@@ -91,10 +91,5 @@ If you encounter any import errors:
 - Make sure you're running the application using the provided `run.py` script
 - Ensure you have Flask installed (`pip install flask`)
 - If running from the src directory directly, use relative imports
-
-## Credits
-
-This project is based on the Huffman Coding algorithm implementation from:
-https://github.com/sandeepvaid/HUFFMAN-CODING-PROJECT-IN-PYTHON
 
 Enhanced with a professional web UI for the DSA project presentation.
